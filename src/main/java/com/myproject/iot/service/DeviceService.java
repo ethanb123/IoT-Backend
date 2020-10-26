@@ -19,6 +19,18 @@ public class DeviceService {
         return deviceRepository.save(device);
     }
 
+
+    //First attempt at a delete function
+    //called in the controller class
+    public String deleteDevice(long id) {
+        // delete function that passes through the device id to the delete function to find in the repository
+        Device temp = deviceRepository.getOne(id);
+        //delete the device after it is found
+        deviceRepository.delete(temp);
+        //return a string to say deleted
+        return "Deleted";
+    }
+
     public List<Device> getDevices() {
         return deviceRepository.findAll();
     }

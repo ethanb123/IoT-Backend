@@ -32,5 +32,13 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
+    // Added an attempt at a delete mapping function
+    // deleteDevice can be found in the deviceService class
+    @DeleteMapping("/{id}")
+    public String deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
+        return deviceService.deleteDevice(id); //passes through the id, returns a string after device is deleted
+    }
+
+
     // Exercise: add the code delete a device and test it, see DeviceRepository class
 }
