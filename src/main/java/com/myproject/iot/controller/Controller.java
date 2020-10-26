@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,10 +35,11 @@ public class Controller {
 
     // Added an attempt at a delete mapping function
     // deleteDevice can be found in the deviceService class
-    @DeleteMapping("/2")
-    public String deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
-        return deviceService.deleteDevice(id); //passes through the id, returns a string after device is deleted
-    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
+        //passes through the id, returns a string after device is deleted
+        return new ResponseEntity<>(deviceService.deleteDevice(id), HttpStatus.OK);
+        }
 
 
     // Exercise: add the code delete a device and test it, see DeviceRepository class
