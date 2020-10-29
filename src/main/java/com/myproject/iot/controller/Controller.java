@@ -35,7 +35,7 @@ public class Controller {
 
     // Added an attempt at a delete mapping function
     // deleteDevice can be found in the deviceService class
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
         //passes through the id to the delete function in deviceService
         deviceService.deleteDevice(id);
