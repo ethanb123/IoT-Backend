@@ -41,7 +41,7 @@ public class Controller {
         deviceService.deleteDevice(id);
         //test if it is actually deleted
         boolean a = deviceService.deviceExists(id);
-        String msg = "";
+        String msg = ""; 
         if (a)
             msg = "Error";
         if (!a)
