@@ -41,12 +41,12 @@ public class Controller {
         deviceService.deleteDevice(id);
         //test if it is actually deleted
         boolean a = deviceService.deviceExists(id);
-        String msg = ""; 
+        String msg = "";
         if (a)
             msg = "Error";
         if (!a)
             msg = "Deleted";
         //returning set message
-        return msg;
+        return new ResponseEntity<>(msg, HttpStatus.OK);
         }
 }
