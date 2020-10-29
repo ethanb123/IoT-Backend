@@ -35,12 +35,9 @@ public class Controller {
 
     // Added an attempt at a delete mapping function
     // deleteDevice can be found in the deviceService class
-    @DeleteMapping("/{id}")
+    @PostMapping("/post2")
     public ResponseEntity<String> deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
         //passes through the id, returns a string after device is deleted
         return new ResponseEntity<>(deviceService.deleteDevice(id), HttpStatus.OK);
         }
-
-
-    // Exercise: add the code delete a device and test it, see DeviceRepository class
 }
