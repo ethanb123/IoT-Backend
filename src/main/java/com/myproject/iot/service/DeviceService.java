@@ -22,18 +22,14 @@ public class DeviceService {
 
     //First attempt at a delete function
     //called in the controller class
-    public String deleteDevice(long id) {
-        //temporary string to check if device was deleted successfully
-        String returnStr ="";
+    public void deleteDevice(Long id) {
         //find and delete the device by the id passed through
        deviceRepository.deleteById(id);
-       boolean a = deviceRepository.existsById(id);
-       if (a)
-           returnStr = "Error";
-       if (!a)
-           returnStr = "Deleted";
+    }
 
-       return returnStr;
+    //checks to see if it is deleted
+    public boolean deviceExists(long id) {
+        return deviceRepository.existsById(id);
     }
 
     public List<Device> getDevices() {

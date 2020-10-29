@@ -35,9 +35,18 @@ public class Controller {
 
     // Added an attempt at a delete mapping function
     // deleteDevice can be found in the deviceService class
-    @DeleteMapping("/")
-    public ResponseEntity<String> deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
-        //passes through the id, returns a string after device is deleted
-        return new ResponseEntity<>(deviceService.deleteDevice(id), HttpStatus.OK);
+    @DeleteMapping("/{id}")
+    public String deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
+        //passes through the id to the delete function in deviceService
+        deviceService.deleteDevice(id);
+        //test if it is actually deleted
+        boolean a = deviceService.deviceExists(id);
+        String msg = "";
+        if (a)
+            msg = "Error";
+        if (!a)
+            msg = "Deleted";
+        //returning set message
+        return msg;
         }
 }
