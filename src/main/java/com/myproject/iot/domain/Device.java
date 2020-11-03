@@ -12,11 +12,14 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String macAddress;
 
-
-    public Device(Long id, String name) {
+//added mac address to the device itself
+    public Device(Long id, String name, String macAddress) {
         this.id = id;
         this.name = name;
+        //sets macAddress
+        this.macAddress = macAddress;
     }
 
     public Device() {
@@ -39,11 +42,16 @@ public class Device {
         this.name = name;
     }
 
+    //get and set functions for the mac address variable inside device
+    public String getMacAddress() {return macAddress;}
+
+    public void setMacAddress(String macAddress) {this.macAddress = macAddress;}
+
     @Override
     public String toString() {
         return "Device{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + name + ", MAC Address = " + macAddress + '\'' +
                 '}';
     }
 }

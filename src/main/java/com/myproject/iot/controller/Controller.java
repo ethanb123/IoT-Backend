@@ -22,21 +22,23 @@ public class Controller {
 
     @PostMapping("/")
     public ResponseEntity<Device> addDevice(@RequestBody CreateDevicePayload payload) {
-        return new ResponseEntity<>(deviceService.addDevice(payload.getName()), HttpStatus.CREATED);
+        //added payload.getMacAddress() to parameters needed to generate a new device
+        return new ResponseEntity<>(deviceService.addDevice(payload.getName(), payload.getMacAddress()), HttpStatus.CREATED);
     }
 
     @GetMapping("/")
     public List<DeviceDto> getDevices() {
         return deviceService.getDevices()
                 .stream()
-                .map(device -> new DeviceDto(device.getId(), device.getName()))
+                //added mac address to the function call to pass through to the device creation
+                .map(device -> new DeviceDto(device.getId(), device.getName(), device.getMacAddress()))
                 .collect(Collectors.toList());
     }
 
     // Added an attempt at a delete mapping function
     // deleteDevice can be found in the deviceService class
     @PostMapping("/delete/{id}")
-    public String deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
+    public ResponseEntity<String> deleteDevice(@PathVariable Long id) { //passes through a long id to use to find device
         //passes through the id to the delete function in deviceService
         deviceService.deleteDevice(id);
         //test if it is actually deleted

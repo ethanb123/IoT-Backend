@@ -13,9 +13,12 @@ public class DeviceService {
     @Autowired
     private DeviceRepository deviceRepository;
 
-    public Device addDevice(String name) {
+    //added parameter for mac address
+    public Device addDevice(String name, String macAddress) {
         Device device = new Device();
         device.setName(name);
+        //set the mac address when creating device
+        device.setMacAddress(macAddress);
         return deviceRepository.save(device);
     }
 
@@ -27,7 +30,7 @@ public class DeviceService {
        deviceRepository.deleteById(id);
     }
 
-    //checks to see if it is deleted
+    //function to check to see if it is deleted
     public boolean deviceExists(long id) {
         return deviceRepository.existsById(id);
     }

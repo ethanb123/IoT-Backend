@@ -4,13 +4,15 @@ public class DeviceDto {
 
     private long id;
     private String name;
+    private String macAddress;
 
     public DeviceDto() {
     }
-
-    public DeviceDto(long id, String name) {
+//added string mac address to the parameters of the deviceDTO function
+    public DeviceDto(long id, String name, String macAddress) {
         this.id = id;
         this.name = name;
+        this.macAddress = macAddress;
     }
 
     public long getId() {
@@ -28,4 +30,9 @@ public class DeviceDto {
     public void setName(String name) {
         this.name = name;
     }
+
+    //added get and set functions for the mac address
+    public String getMacAddress() {return macAddress;}
+
+    public void setMacAddress(String macAddress) {this.macAddress = macAddress;}
 }
