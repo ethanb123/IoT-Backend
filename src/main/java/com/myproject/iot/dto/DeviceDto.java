@@ -5,14 +5,17 @@ public class DeviceDto {
     private long id;
     private String name;
     private String macAddress;
+    private String ip;
 
     public DeviceDto() {
     }
 //added string mac address to the parameters of the deviceDTO function
-    public DeviceDto(long id, String name, String macAddress) {
+    // added string ip to the parameters of the device DTO function
+    public DeviceDto(long id, String name, String macAddress, String ip) {
         this.id = id;
         this.name = name;
         this.macAddress = macAddress;
+        this.ip = ip;
     }
 
     public long getId() {
@@ -35,4 +38,9 @@ public class DeviceDto {
     public String getMacAddress() {return macAddress;}
 
     public void setMacAddress(String macAddress) {this.macAddress = macAddress;}
+
+    //added get and set function for the ip address
+    public String getIp() {return ip;}
+
+    public void setIp(String ip) {this.ip = ip;}
 }

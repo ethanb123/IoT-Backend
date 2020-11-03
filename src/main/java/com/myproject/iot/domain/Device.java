@@ -13,13 +13,16 @@ public class Device {
     private Long id;
     private String name;
     private String macAddress;
+    private String ip;
 
 //added mac address to the device itself
-    public Device(Long id, String name, String macAddress) {
+    public Device(Long id, String name, String macAddress, String ip) {
         this.id = id;
         this.name = name;
         //sets macAddress
         this.macAddress = macAddress;
+        //set ip address
+        this.ip = ip;
     }
 
     public Device() {
@@ -47,11 +50,16 @@ public class Device {
 
     public void setMacAddress(String macAddress) {this.macAddress = macAddress;}
 
+    //get and set functions for the ip address variable inside device
+    public String getIp() {return ip;}
+
+    public void setIp(String ip) {this.ip = ip;}
+
     @Override
     public String toString() {
         return "Device{" +
                 "id=" + id +
-                ", name='" + name + ", MAC Address = " + macAddress + '\'' +
+                ", name='" + name + ", MAC Address = " + macAddress + ", IP Address = " + ip + '\'' +
                 '}';
     }
 }
