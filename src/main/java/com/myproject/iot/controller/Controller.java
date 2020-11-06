@@ -23,7 +23,7 @@ public class Controller {
     @PostMapping("/")
     public ResponseEntity<Device> addDevice(@RequestBody CreateDevicePayload payload) {
         //added payload.getMacAddress() to parameters needed to generate a new device
-        return new ResponseEntity<>(deviceService.addDevice(payload.getName(), payload.getMacAddress(), payload.getIp()), HttpStatus.CREATED);
+        return new ResponseEntity<>(deviceService.addDevice(payload.getName(), payload.getMacAddress(), payload.getIp(), payload.getGateway()), HttpStatus.CREATED);
     }
 
     @GetMapping("/")
@@ -31,7 +31,7 @@ public class Controller {
         return deviceService.getDevices()
                 .stream()
                 //added mac address to the function call to pass through to the device creation
-                .map(device -> new DeviceDto(device.getId(), device.getName(), device.getMacAddress(), device.getIp()))
+                .map(device -> new DeviceDto(device.getId(), device.getName(), device.getMacAddress(), device.getIp(), device.getGateway()))
                 .collect(Collectors.toList());
     }
 

@@ -14,13 +14,15 @@ public class DeviceService {
     private DeviceRepository deviceRepository;
 
     //added parameter for mac address
-    public Device addDevice(String name, String macAddress, String ip) {
+    public Device addDevice(String name, String macAddress, String ip, boolean isGateway) {
         Device device = new Device();
         device.setName(name);
         //set the mac address when creating device
         device.setMacAddress(macAddress);
         //set the ip address when creating device
         device.setIp(ip);
+        //set the gateway status
+        device.setGateway(isGateway);
         return deviceRepository.save(device);
     }
 
