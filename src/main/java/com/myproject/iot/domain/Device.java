@@ -15,9 +15,10 @@ public class Device {
     private String macAddress;
     private String ip;
     private boolean isGateway;
+    private String deviceType;
 
 //added mac address to the device itself
-    public Device(Long id, String name, String macAddress, String ip, boolean isGateway) {
+    public Device(Long id, String name, String macAddress, String ip, boolean isGateway, String deviceType) {
         this.id = id;
         this.name = name;
         //sets macAddress
@@ -26,6 +27,8 @@ public class Device {
         this.ip = ip;
         //gateway flag
         this.isGateway = isGateway;
+        //deviceType flag
+        this.deviceType = deviceType;
     }
 
     public Device() {
@@ -58,16 +61,21 @@ public class Device {
 
     public void setIp(String ip) {this.ip = ip;}
 
-    //addeed get and set for gateway boolean
+    //get and set functions for the isGateway variable inside device
     public boolean getGateway() {return isGateway;}
 
     public void setGateway(boolean isGateway) {this.isGateway = isGateway;}
+
+    //get and set functions for the ip address variable inside device
+    public String getDeviceType() {return deviceType;}
+
+    public void setDeviceType(String deviceType) {this.deviceType = deviceType;}
 
     @Override
     public String toString() {
         return "Device{" +
                 "id=" + id +
-                ", name='" + name + ", MAC Address = " + macAddress + ", IP Address = " + ip + ", Gateway status = " + isGateway + '\'' +
+                ", name='" + name + ", MAC Address = " + macAddress + ", IP Address = " + ip + ", Gateway status = " + isGateway + ", deviceType status = " + deviceType + '\'' +
                 '}';
     }
 }

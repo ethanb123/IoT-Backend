@@ -9,6 +9,8 @@ public class CreateDevicePayload {
     private String ip;
     //gateway impamentation
     private boolean isGateway;
+    //gateway impamentation
+    private String deviceType;
 
     public String getName() {
         return name;
@@ -32,6 +34,11 @@ public class CreateDevicePayload {
     public boolean setGateway() { return isGateway;}
 
     public boolean getGateway() {this.isGateway = isGateway; return isGateway;}
+
+    //added get and set for deviceType check
+    public String getDeviceType() {return deviceType;}
+
+    public void setDeviceType (String deviceType) {this.deviceType = name;}
 
 
 

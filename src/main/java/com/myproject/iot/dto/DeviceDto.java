@@ -7,17 +7,19 @@ public class DeviceDto {
     private String macAddress;
     private String ip;
     private boolean isGateway;
+    private String deviceType;
 
     public DeviceDto() {
     }
 //added string mac address to the parameters of the deviceDTO function
     // added string ip to the parameters of the device DTO function
-    public DeviceDto(long id, String name, String macAddress, String ip, boolean isGateway) {
+    public DeviceDto(long id, String name, String macAddress, String ip, boolean isGateway, String deviceType) {
         this.id = id;
         this.name = name;
         this.macAddress = macAddress;
         this.ip = ip;
         this.isGateway = isGateway;
+        this.deviceType = deviceType;
     }
 
     public long getId() {
@@ -45,4 +47,14 @@ public class DeviceDto {
     public String getIp() {return ip;}
 
     public void setIp(String ip) {this.ip = ip;}
+
+    //added get and set function for isGateway
+    public boolean getGateway() {return isGateway;}
+
+    public void setGateway(String ip) {this.isGateway = isGateway;}
+
+    //added get and set function for the ip address
+    public String getDeviceType() {return deviceType;}
+
+    public void setDeviceType(String deviceType) {this.deviceType = deviceType;}
 }
