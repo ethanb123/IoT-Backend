@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class DeviceService {
 
@@ -14,7 +15,7 @@ public class DeviceService {
     private DeviceRepository deviceRepository;
 
     //added parameter for mac address
-    public Device addDevice(String name, String macAddress, String ip, boolean isGateway, String deviceType) {
+    public Device addDevice(String name, String macAddress, String ip, boolean isGateway, String deviceType, int cpID) {
         Device device = new Device();
         device.setName(name);
         //set the mac address when creating device
@@ -25,6 +26,9 @@ public class DeviceService {
         device.setGateway(isGateway);
         //set the deviceType status
         device.setDeviceType(deviceType);
+        //set the child or parent id
+        device.setCpID(cpID);
+
         return deviceRepository.save(device);
     }
 

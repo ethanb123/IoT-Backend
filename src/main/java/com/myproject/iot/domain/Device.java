@@ -16,9 +16,10 @@ public class Device {
     private String ip;
     private boolean isGateway;
     private String deviceType;
+    private int cpID;
 
 //added mac address to the device itself
-    public Device(Long id, String name, String macAddress, String ip, boolean isGateway, String deviceType) {
+    public Device(Long id, String name, String macAddress, String ip, boolean isGateway, String deviceType, int cpID) {
         this.id = id;
         this.name = name;
         //sets macAddress
@@ -29,6 +30,9 @@ public class Device {
         this.isGateway = isGateway;
         //deviceType flag
         this.deviceType = deviceType;
+        //child parent id
+        this.cpID = cpID;
+
     }
 
     public Device() {
@@ -66,16 +70,21 @@ public class Device {
 
     public void setGateway(boolean isGateway) {this.isGateway = isGateway;}
 
-    //get and set functions for the ip address variable inside device
+    //get and set functions for the device type variable
     public String getDeviceType() {return deviceType;}
 
     public void setDeviceType(String deviceType) {this.deviceType = deviceType;}
+
+    //get and set functions for child or parent id
+    public int getCpID() {return cpID;}
+
+    public void setCpID(int cpID) { this.cpID = cpID; }
 
     @Override
     public String toString() {
         return "Device{" +
                 "id=" + id +
-                ", name='" + name + ", MAC Address = " + macAddress + ", IP Address = " + ip + ", Gateway status = " + isGateway + ", deviceType status = " + deviceType + '\'' +
+                ", name='" + name + ", MAC Address = " + macAddress + ", IP Address = " + ip + ", Gateway status = " + isGateway + ", deviceType status = " + deviceType + ", cpID = " + cpID + '\'' +
                 '}';
     }
 }
