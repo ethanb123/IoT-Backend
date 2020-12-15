@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class DeviceService {
 
+    public int gatewayInt = 0;
+
     @Autowired
     private DeviceRepository deviceRepository;
 
@@ -27,7 +29,13 @@ public class DeviceService {
         //set the deviceType status
         device.setDeviceType(deviceType);
         //set the child or parent id
-        device.setCpID(cpID);
+        if (isGateway) {
+            gatewayInt++;
+            device.setCpID(gatewayInt);
+        }
+        else {
+            device.setCpID(cpID);
+        }
 
         return deviceRepository.save(device);
     }
