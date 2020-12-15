@@ -11,13 +11,12 @@ import java.util.List;
 @Service
 public class DeviceService {
 
-    public int gatewayInt = 0;
 
     @Autowired
     private DeviceRepository deviceRepository;
 
     //added parameter for mac address
-    public Device addDevice(String name, String macAddress, String ip, boolean isGateway, String deviceType, int cpID) {
+    public Device addDevice(String name, String macAddress, String ip, boolean isGateway, String deviceType, Long cpID) {
         Device device = new Device();
         device.setName(name);
         //set the mac address when creating device
@@ -29,16 +28,22 @@ public class DeviceService {
         //set the deviceType status
         device.setDeviceType(deviceType);
         //set the child or parent id
-        if (isGateway) {
-            gatewayInt++;
-            device.setCpID(gatewayInt);
-        }
-        else {
-            device.setCpID(cpID);
-        }
+        device.setCpID(cpID);
 
         return deviceRepository.save(device);
     }
+
+    //added a save function that the 'edit' function in the controller uses
+    public Device save(Device d) {
+        return deviceRepository.save(d);
+    }
+
+    //added a get device function for multiple new functions
+    public Device getDevice(Long id)
+    {
+        return deviceRepository.getOne(id);
+    }
+
 
 
     //First attempt at a delete function
@@ -48,8 +53,23 @@ public class DeviceService {
        deviceRepository.deleteById(id);
     }
 
+    // function for deleting gateways using the cpId. Should work just fine as id and cpID are seperate values
+    public void deleteGateway(Long id) {
+        Device gateway = deviceRepository.getOne(id);
+        List<Device> connectedDevices = deviceRepository.cpID(gateway.getId());
+
+        for (int i = 0; i < connectedDevices.size(); i++) {
+            Device holdDevice = connectedDevices.get(i);
+            deviceRepository.deleteById(holdDevice.getId());
+        }
+
+        deviceRepository.deleteById(id);
+    }
+
+
+
     //function to check to see if it is deleted
-    public boolean deviceExists(long id) {
+    public boolean deviceExists(Long id) {
         return deviceRepository.existsById(id);
     }
 

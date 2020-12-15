@@ -8,13 +8,13 @@ public class DeviceDto {
     private String ip;
     private boolean isGateway;
     private String deviceType;
-    private int cpID;
+    private Long cpID;
 
     public DeviceDto() {
     }
     //added string mac address to the parameters of the deviceDTO function
     // added string ip to the parameters of the device DTO function
-    public DeviceDto(long id, String name, String macAddress, String ip, boolean isGateway, String deviceType, int cpID) {
+    public DeviceDto(long id, String name, String macAddress, String ip, boolean isGateway, String deviceType, Long cpID) {
         this.id = id;
         this.name = name;
         this.macAddress = macAddress;
@@ -62,7 +62,7 @@ public class DeviceDto {
     public void setDeviceType(String deviceType) {this.deviceType = deviceType;}
 
     //added get and set functions for the child parent id
-    public int getCpID() {return cpID;}
+    public Long getCpID() {return cpID;}
 
-    public void setCpID(int cpID) { this.cpID = cpID; }
+    public void setCpID(Long cpID) { this.cpID = cpID; }
 }

@@ -2,6 +2,7 @@ package com.myproject.iot.dto;
 
 public class CreateDevicePayload {
 
+    private Long id;
 
     private String name;
     //mac address for the payload
@@ -13,7 +14,12 @@ public class CreateDevicePayload {
     //gateway impamentation
     private String deviceType;
     //child/parent id implementation
-    private int cpID;
+    private Long cpID;
+
+    //get and set for the id
+    public Long getId() {return id;}
+
+    public void setId(Long id) {this.id = id;}
 
 
     public String getName() {
@@ -45,9 +51,9 @@ public class CreateDevicePayload {
     public void setDeviceType (String deviceType) {this.deviceType = name;}
 
     //attempt for device child and parent values
-    public int getCpID() { return cpID; }
+    public Long getCpID() { return cpID; }
 
-    public void setCpID(int cpID) { this.cpID = cpID; }
+    public void setCpID(Long cpID) { this.cpID = cpID; }
 
 
 

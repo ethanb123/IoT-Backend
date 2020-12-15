@@ -51,4 +51,26 @@ public class Controller {
         //returning set message
         return new ResponseEntity<>(msg, HttpStatus.OK);
         }
+
+    @DeleteMapping("/deleteGateway/{id}")
+    public ResponseEntity<String> deleteGateway(@PathVariable Long id) {
+        deviceService.deleteGateway(id);
+        String msg = "Gateway deleted";
+        return new ResponseEntity<>(msg, HttpStatus.OK);
+    }
+
+    //first attempt at editing existing device
+    // had to add and 'id' get and set section in payload, as it was just auto generated in the device.java class
+    // before. not sure if it will grab the correct id yet, needs testing
+    @PutMapping("/edit")
+    public ResponseEntity<Device> editDevice(@RequestBody CreateDevicePayload payload) {
+        Device device = deviceService.getDevice(payload.getId());
+        device.setName(payload.getName());
+        device.setMacAddress(payload.getMacAddress());
+        device.setIp(payload.getIp());
+        return ResponseEntity.ok(deviceService.save(device));
+    }
+
+
+
 }

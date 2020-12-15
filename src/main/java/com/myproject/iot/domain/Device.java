@@ -16,10 +16,10 @@ public class Device {
     private String ip;
     private boolean isGateway;
     private String deviceType;
-    private int cpID;
+    private Long cpID;
 
 //added mac address to the device itself
-    public Device(Long id, String name, String macAddress, String ip, boolean isGateway, String deviceType, int cpID) {
+    public Device(Long id, String name, String macAddress, String ip, boolean isGateway, String deviceType, Long cpID) {
         this.id = id;
         this.name = name;
         //sets macAddress
@@ -76,9 +76,9 @@ public class Device {
     public void setDeviceType(String deviceType) {this.deviceType = deviceType;}
 
     //get and set functions for child or parent id
-    public int getCpID() {return cpID;}
+    public Long getCpID() {return cpID;}
 
-    public void setCpID(int cpID) { this.cpID = cpID; }
+    public void setCpID(Long cpID) { this.cpID = cpID; }
 
     @Override
     public String toString() {
